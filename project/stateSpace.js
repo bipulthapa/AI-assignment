@@ -36,11 +36,11 @@ function setup() {
 
   fill(255);
   rect(10,165,25,25);
-  text("Solution",45,185);
+  text("Solution State",45,185);
 
   fill(255,245,0);
   rect(10,205,25,25);
-  text("Unvisited",45,225);
+  text("Unvisited State",45,225);
 
   rootNode.x = windowWidth  /2;
   rootNode.y = 150;
@@ -166,7 +166,8 @@ function draw() {
   frameRate(5);
   textSize(22);
   fill("#f5f5f5");
-  text(state[0].value,width/2,150);
+  translate(width/12,15);
+  text("["+state[0].value+"]",width/2,150);
   textSize(20);
   displayOutput();
   i++
@@ -208,10 +209,9 @@ function displayOutput(){
         }
       }
       stroke(255, 255, 255, 120);
-      line(state[i].x + 5, state[i].y, state[i].x + 5, state[i].y + 20);
+      line(state[i].x + 10, state[i].y, state[i].x + 5, state[i].y + 20);
       noStroke();
-    
-      text(tempArray[0].value, state[i].x, state[i].y + 40);
+      text("<"+tempArray[0].value+">", state[i].x-7, state[i].y + 40); // added but not pos changed
       fill(255, 0, 0);
       for(let b = 0; b < state.length; b++) {
         if(state[b].value[0] === tempArray[0].value[0] && state[b].value[1] === tempArray[0].value[1] && state[b].value[2] === tempArray[0].value[2]) {
@@ -233,9 +233,9 @@ function displayOutput(){
           }
         }
         stroke(255, 255, 255, 120);
-        line(state[i].x + 15, state[i].y, state[i].x - (25 * (tempArray.length - 1)) + p * 50 + 15, state[i].y + 20);
+        line(state[i].x + 15, state[i].y, state[i].x - (25 * (tempArray.length - 1)) + p * 70 + 15, state[i].y + 20);
         noStroke();
-        text(tempArray[p].value,(state[i].x - (25 * (tempArray.length - 1))) + p * 50, state[i].y + 40);
+        text("["+tempArray[p].value+"]",(state[i].x - (25 * (tempArray.length - 1))) + p * 70, state[i].y + 40);
         fill(255, 0, 0);
   
         for(let b = 0; b < state.length; b++) {
@@ -262,10 +262,10 @@ function displayOutput(){
           }
         }
         stroke(255, 255, 255, 120);
-        line(state[i].x + 15, state[i].y + 5, ((state[i].x) - ((tempArray.length - 3) * 25) - 50) + l * 50 + 15, state[i].y + 20);
+        line(state[i].x + 15, state[i].y + 5, ((state[i].x) - ((tempArray.length - 3) * 25) - 50) + l * 70 + 15, state[i].y + 20);
         noStroke();
         textSize(20)
-        text(tempArray[l].value, ((state[i].x) - ((tempArray.length - 3) * 25) - 50) + l * 50, state[i].y + 40);
+        text("["+tempArray[l].value+"]", ((state[i].x) - ((tempArray.length - 3) * 25) - 50) + l * 70-30, state[i].y + 40);
         fill(255, 0, 0);
         for(let b = 0; b < state.length; b++) {
           if(state[b].value[0] === tempArray[l].value[0] && state[b].value[1] === tempArray[l].value[1] && state[b].value[2] === tempArray[l].value[2]) {
